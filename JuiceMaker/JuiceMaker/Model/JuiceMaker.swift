@@ -16,12 +16,12 @@ struct JuiceMaker {
             makingJuice(selectedMenu: selectedMenu, recipe: recipe) //주스제조
         }
         printResultOfMakingJuice(result: check) //제조결과(성공/실패) 출력
-//                print("\n수정 후 재고")
-//                print("딸기 ",fruitStore.stockOfStrawberry)
-//                print("바나나: ",fruitStore.stockOfBanana)
-//                print("파인애플: ",fruitStore.stockOfPineapple)
-//                print("키위: ",fruitStore.stockOfKiwi)
-//                print("망고: ",fruitStore.stockOfMango)
+                print("\n수정 후 재고")
+                print("딸기 ",fruitStore.stockOfStrawberry)
+                print("바나나: ",fruitStore.stockOfBanana)
+                print("파인애플: ",fruitStore.stockOfPineapple)
+                print("키위: ",fruitStore.stockOfKiwi)
+                print("망고: ",fruitStore.stockOfMango)
     }
     
     func makingJuice(selectedMenu: Array<String>, recipe: Recipe) {                         //주스제조
