@@ -7,16 +7,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    
-    @IBAction func stockModify(_ sender: UIBarButtonItem) {
-    }
     
     @IBOutlet weak var stockOfStrawberryLabel: UILabel!
     @IBOutlet weak var stockOfBananaLabel: UILabel!
     @IBOutlet weak var stockOfPineappleLabel: UILabel!
     @IBOutlet weak var stockOfKiwiLabel: UILabel!
     @IBOutlet weak var stockOfMangoLabel: UILabel!
+    
+    
+    @IBAction func stockModifyButton(_ sender: Any) {
+        
+    }
     
     @IBAction func strawberryBananaJuiceButton(_ sender: UIButton) {
     }
