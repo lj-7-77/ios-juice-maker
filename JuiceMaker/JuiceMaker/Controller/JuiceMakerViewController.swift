@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class JuiceMakerViewController: UIViewController {
     
     @IBOutlet weak var stockOfStrawberryLabel: UILabel!
     @IBOutlet weak var stockOfBananaLabel: UILabel!
@@ -34,10 +34,16 @@ class ViewController: UIViewController {
     @IBAction func mangoJuiceButton(_ sender: UIButton) {
     }
     
+    let juiceMaker = JuiceMaker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let juiceMaker = JuiceMaker()
+        stockOfStrawberryLabel.text = "\(juiceMaker.fruitStore.stockOfStrawberry)"
+        stockOfBananaLabel.text = "\(juiceMaker.fruitStore.stockOfBanana)"
+        stockOfPineappleLabel.text = "\(juiceMaker.fruitStore.stockOfPineapple)"
+        stockOfKiwiLabel.text = "\(juiceMaker.fruitStore.stockOfKiwi)"
+        stockOfMangoLabel.text = "\(juiceMaker.fruitStore.stockOfMango)"
         
         print("\n딸기바나나 주문")
         var recipe: Recipe = Recipe.init(menu: "strawberryBananaJuice")
