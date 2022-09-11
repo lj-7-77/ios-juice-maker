@@ -8,6 +8,31 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBAction func stockModify(_ sender: UIBarButtonItem) {
+    }
+    
+    @IBOutlet weak var stockOfStrawberryLabel: UILabel!
+    @IBOutlet weak var stockOfBananaLabel: UILabel!
+    @IBOutlet weak var stockOfPineappleLabel: UILabel!
+    @IBOutlet weak var stockOfKiwiLabel: UILabel!
+    @IBOutlet weak var stockOfMangoLabel: UILabel!
+    
+    @IBAction func strawberryBananaJuiceButton(_ sender: UIButton) {
+    }
+    @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
+    }
+    @IBAction func strawberryJuiceButton(_ sender: UIButton) {
+    }
+    @IBAction func bananaJuiceButton(_ sender: UIButton) {
+    }
+    @IBAction func pineappleJuiceButton(_ sender: UIButton) {
+    }
+    @IBAction func kiwiJuiceButton(_ sender: UIButton) {
+    }
+    @IBAction func mangoJuiceButton(_ sender: UIButton) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
