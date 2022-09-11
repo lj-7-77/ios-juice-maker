@@ -66,7 +66,7 @@ class FruitStore {
         return false
     }
     
-    func useStock(selectedMenu: Array<String>, recipe: Recipe) {        //재고차감
+    func changeStock(selectedMenu: Array<String>, recipe: Recipe) {        //재고차감
         for i in 0..<selectedMenu.count {
             let checkFruit: String = "\(selectedMenu[i])"
             switch checkFruit {

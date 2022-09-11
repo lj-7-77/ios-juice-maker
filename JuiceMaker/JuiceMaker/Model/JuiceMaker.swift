@@ -25,7 +25,7 @@ struct JuiceMaker {
     }
     
     func makingJuice(selectedMenu: Array<String>, recipe: Recipe) {                         //주스제조
-        fruitStore.useStock(selectedMenu: selectedMenu, recipe: recipe) //과일사용->재고수정
+        fruitStore.changeStock(selectedMenu: selectedMenu, recipe: recipe) //과일사용->재고수정
     }
 
     func printResultOfMakingJuice(result: Bool) {                                //제조결과 출력
