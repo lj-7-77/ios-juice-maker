@@ -13,7 +13,7 @@
         <!--맛있는 쥬스를 만들어 드려요!-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="JuiceMakerViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="currentContext" id="BYZ-38-t0r" customClass="JuiceMakerViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -239,7 +239,7 @@
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
                                 <action selector="stockModifyButton:" destination="BYZ-38-t0r" id="ovX-I1-9Ic"/>
-                                <segue destination="Yu1-lM-nqp" kind="modal" modalTransitionStyle="coverVertical" id="Asa-y9-HfR"/>
+                                <segue destination="WwV-Td-3Bn" kind="presentation" id="v8t-gI-WPX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -276,7 +276,7 @@
         <!--Stock Modify View Controller-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
-                <viewController storyboardIdentifier="StockModifyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yu1-lM-nqp" customClass="StockModifyViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StockModifyViewController" modalPresentationStyle="currentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yu1-lM-nqp" customClass="StockModifyViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tKV-4l-Vtc">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -408,11 +408,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g4W-fY-l7r">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="j6y-jx-gLC">
+                        <barButtonItem key="rightBarButtonItem" title="닫기" id="j6y-jx-gLC">
                             <connections>
-                                <action selector="closeStockModify:" destination="Yu1-lM-nqp" id="e1i-Zn-iJz"/>
+                                <action selector="closeButton:" destination="Yu1-lM-nqp" id="EMi-i3-dMF"/>
                             </connections>
                         </barButtonItem>
+                        <connections>
+                            <outlet property="rightBarButtonItem" destination="j6y-jx-gLC" id="iYS-zb-Uv2"/>
+                        </connections>
                     </navigationItem>
                     <connections>
                         <outlet property="manageStockOfBananaLabel" destination="gKu-86-RhI" id="Ijl-sh-TJl"/>
@@ -431,7 +434,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WwV-Td-3Bn" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ufw-7J-6hD">
+                    <navigationBar key="navigationBar" contentMode="scaleAspectFit" id="ufw-7J-6hD">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -448,9 +451,6 @@
             <point key="canvasLocation" x="1649" y="-117"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="wH1-3A-cBm"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
