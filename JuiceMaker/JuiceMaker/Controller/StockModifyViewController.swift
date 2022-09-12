@@ -2,17 +2,34 @@
 //  StockModifyViewController.swift
 //  JuiceMaker
 //
-//  Created by 임지연 on 2022/09/11.
+//  Created by LJ on 2022/09/11.
 //
 
 import UIKit
 
 class StockModifyViewController: UIViewController {
 
+    @IBOutlet weak var manageStockOfStrawberryLabel: UILabel!
+    
+    @IBOutlet weak var manageStockOfBananaLabel: UILabel!
+    @IBOutlet weak var manageStockOfPineappleLabel: UILabel!
+    @IBOutlet weak var manageStockOfKiwiLabel: UILabel!
+    @IBOutlet weak var manageStockOfMangoLabel: UILabel!
+    
+    var manageStockOfStrawberry: Int = 0
+    var manageStockOfBanana: Int = 0
+    var manageStockOfPineapple: Int = 0
+    var manageStockOfKiwi: Int = 0
+    var manageStockOfMango: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        manageStockOfStrawberryLabel.text = "\(manageStockOfStrawberry)"
+        manageStockOfBananaLabel.text = "\(manageStockOfBanana)"
+        manageStockOfPineappleLabel.text = "\(manageStockOfPineapple)"
+        manageStockOfKiwiLabel.text = "\(manageStockOfKiwi)"
+        manageStockOfMangoLabel.text = "\(manageStockOfMango)"
     }
     
 

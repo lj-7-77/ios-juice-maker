@@ -28,7 +28,7 @@ class JuiceMakerViewController: UIViewController {
         nameOfJuice = "딸기바나나"
         selectedMenu = recipe.strawberryBananaJuice
         boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        checkAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
+        showAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
         updateStockLabel()
     }
     @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
@@ -36,7 +36,7 @@ class JuiceMakerViewController: UIViewController {
         nameOfJuice = "망고키위"
         selectedMenu = recipe.mangoKiwiJuice
         boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        checkAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
+        showAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
         updateStockLabel()
     }
     @IBAction func strawberryJuiceButton(_ sender: UIButton) {
@@ -44,7 +44,7 @@ class JuiceMakerViewController: UIViewController {
         nameOfJuice = "딸기"
         selectedMenu = recipe.strawberryJuice
         boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        checkAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
+        showAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
         updateStockLabel()
     }
     @IBAction func bananaJuiceButton(_ sender: UIButton) {
@@ -52,7 +52,7 @@ class JuiceMakerViewController: UIViewController {
         nameOfJuice = "바나나"
         selectedMenu = recipe.bananaJuice
         boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        checkAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
+        showAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
         updateStockLabel()
     }
     @IBAction func pineappleJuiceButton(_ sender: UIButton) {
@@ -60,7 +60,7 @@ class JuiceMakerViewController: UIViewController {
         nameOfJuice = "파인애플"
         selectedMenu = recipe.pineappleJuice
         boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        checkAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
+        showAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
         updateStockLabel()
     }
     @IBAction func kiwiJuiceButton(_ sender: UIButton) {
@@ -68,7 +68,7 @@ class JuiceMakerViewController: UIViewController {
         nameOfJuice = "키위"
         selectedMenu = recipe.kiwiJuice
         boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        checkAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
+        showAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
         updateStockLabel()
     }
     @IBAction func mangoJuiceButton(_ sender: UIButton) {
@@ -76,7 +76,7 @@ class JuiceMakerViewController: UIViewController {
         nameOfJuice = "망고"
         selectedMenu = recipe.mangoJuice
         boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        checkAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
+        showAlert(boolJuice: boolJuice, nameOfJuice: nameOfJuice)
         updateStockLabel()
     }
     
@@ -85,7 +85,7 @@ class JuiceMakerViewController: UIViewController {
         updateStockLabel()
     }
     
-    func checkAlert(boolJuice: Bool, nameOfJuice: String){
+    func showAlert(boolJuice: Bool, nameOfJuice: String){
         let successAlert = UIAlertController(title: "제조 완료",
                                              message: "\(nameOfJuice)쥬스 나왔습니다! 맛있게 드세요!",
                                              preferredStyle: UIAlertController.Style.alert)
@@ -100,6 +100,13 @@ class JuiceMakerViewController: UIViewController {
                     as? StockModifyViewController else {
                 return
             }
+            stockModifyViewController.manageStockOfStrawberry = self.juiceMaker.fruitStore.stock.strawberry
+            stockModifyViewController.manageStockOfBanana = self.juiceMaker.fruitStore.stock.banana
+            stockModifyViewController.manageStockOfPineapple = self.juiceMaker.fruitStore.stock.pineapple
+            stockModifyViewController.manageStockOfKiwi = self.juiceMaker.fruitStore.stock.kiwi
+            stockModifyViewController.manageStockOfMango = self.juiceMaker.fruitStore.stock.mango
+            
+            
             self.navigationController?.pushViewController(stockModifyViewController, animated: true)
         }
         
@@ -107,12 +114,13 @@ class JuiceMakerViewController: UIViewController {
         failAlert.addAction(failAction)
         failAlert.addAction(stockManageAction)
        
-        if boolJuice ==  true {
+        if boolJuice == true {
             present(successAlert, animated: true)
         } else {
             present(failAlert, animated: true)
         }
     }
+    
     func updateStockLabel() {
         stockOfStrawberryLabel.text = "\(juiceMaker.fruitStore.stock.strawberry)"
         stockOfBananaLabel.text = "\(juiceMaker.fruitStore.stock.banana)"
