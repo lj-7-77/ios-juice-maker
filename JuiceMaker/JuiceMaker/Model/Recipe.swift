@@ -56,7 +56,7 @@ class Recipe {
             requiredKiwi = 0
             requiredMango = 3
         case "strawberryBananaJuice":
-            requiredStrawberry = 10
+            requiredStrawberry = 11
             requiredBanana = 1
             requiredPineapple = 0
             requiredKiwi = 0
