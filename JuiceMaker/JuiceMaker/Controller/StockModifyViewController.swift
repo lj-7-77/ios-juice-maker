@@ -16,6 +16,11 @@ class StockModifyViewController: UIViewController {
     @IBOutlet weak var manageStockOfKiwiLabel: UILabel!
     @IBOutlet weak var manageStockOfMangoLabel: UILabel!
     
+   
+    @IBAction func closeStockModify(_ sender: UIBarButtonItem) {
+    }
+    
+    
     var manageStockOfStrawberry: Int = 0
     var manageStockOfBanana: Int = 0
     var manageStockOfPineapple: Int = 0
