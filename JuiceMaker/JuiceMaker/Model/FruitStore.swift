@@ -8,20 +8,7 @@ import Foundation
 
 class FruitStore {
     
-    var stockOfStrawberry: Int
-    var stockOfBanana: Int
-    var stockOfPineapple: Int
-    var stockOfKiwi: Int
-    var stockOfMango: Int
-
-    init() {
-        stockOfStrawberry = 10
-        stockOfBanana = 10
-        stockOfPineapple = 10
-        stockOfKiwi = 10
-        stockOfMango = 10
-    }
-    
+    var stock: stockOfFruit = stockOfFruit()
 
     func checkStock(selectedMenu: Array<String>, recipe: Recipe) -> Bool {              //재고확인
         var resultOfFruitStock: Array<Bool> = []
@@ -41,23 +28,23 @@ class FruitStore {
     func comparisonOfStockAndOrder(requiredFruit: String, recipe: Recipe) -> Bool {     //재고량-필요량 비교
         switch requiredFruit {
         case "requiredStrawberry":
-            if stockOfStrawberry >= recipe.requiredStrawberry {
+            if stock.strawberry >= recipe.requiredStrawberry {
                 return true
             }
         case "requiredBanana":
-            if stockOfBanana >= recipe.requiredBanana {
+            if stock.banana >= recipe.requiredBanana {
                 return true
             }
         case "requiredPineapple":
-            if stockOfPineapple >= recipe.requiredPineapple {
+            if stock.pineapple >= recipe.requiredPineapple {
                 return true
             }
         case "requiredKiwi":
-            if stockOfKiwi >= recipe.requiredKiwi {
+            if stock.kiwi >= recipe.requiredKiwi {
                 return true
             }
         case "requiredMango":
-            if stockOfMango >= recipe.requiredMango {
+            if stock.mango >= recipe.requiredMango {
                 return true
             }
         default:
@@ -71,18 +58,19 @@ class FruitStore {
             let checkFruit: String = "\(selectedMenu[i])"
             switch checkFruit {
             case "requiredStrawberry":
-                stockOfStrawberry -= recipe.requiredStrawberry
+                stock.strawberry -= recipe.requiredStrawberry
             case "requiredBanana":
-                stockOfBanana -= recipe.requiredBanana
+                stock.banana -= recipe.requiredBanana
             case "requiredPineapple":
-                stockOfPineapple -= recipe.requiredPineapple
+                stock.pineapple -= recipe.requiredPineapple
             case "requiredKiwi":
-                stockOfKiwi -= recipe.requiredKiwi
+                stock.kiwi -= recipe.requiredKiwi
             case "requiredMango":
-                stockOfMango -= recipe.requiredMango
+                stock.mango -= recipe.requiredMango
             default:
-                return
+                break
             }
         }
+        //return stock
     }
 }
