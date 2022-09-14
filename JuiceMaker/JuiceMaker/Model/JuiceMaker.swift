@@ -11,7 +11,7 @@ struct JuiceMaker {
     
     var fruitStore: FruitStore = FruitStore()           //과일저장소를 소유
     
-    func orderJuice(selectedMenu: Array<String>, recipe: Recipe) -> Bool {                        //주스 주문
+    func orderJuice(selectedMenu: Array<String>, recipe: Recipe) -> Bool {           //주스 주문
         let check: Bool = fruitStore.checkStock(selectedMenu: selectedMenu, recipe: recipe) //재고확인
         if check == true {
             makingJuice(selectedMenu: selectedMenu, recipe: recipe) //주스제조

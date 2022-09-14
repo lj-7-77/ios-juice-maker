@@ -239,7 +239,7 @@
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
                                 <action selector="stockModifyButton:" destination="BYZ-38-t0r" id="ovX-I1-9Ic"/>
-                                <segue destination="WwV-Td-3Bn" kind="presentation" id="v8t-gI-WPX"/>
+                                <segue destination="WwV-Td-3Bn" kind="presentation" identifier="manageByButton" id="v8t-gI-WPX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -300,13 +300,18 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
                                                 <rect key="frame" x="0.0" y="121" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="strawberryStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="6Ia-ad-IvV"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="ZQk-f4-zrz" firstAttribute="centerX" secondItem="dCK-AJ-zGU" secondAttribute="centerX" id="B0V-YD-5EY"/>
+                                            <constraint firstItem="ZQk-f4-zrz" firstAttribute="centerX" secondItem="dCK-AJ-zGU" secondAttribute="centerX" id="jTV-gd-Jeh"/>
                                             <constraint firstItem="0yV-kn-zaT" firstAttribute="centerX" secondItem="dCK-AJ-zGU" secondAttribute="centerX" id="xbb-oS-22m"/>
+                                            <constraint firstItem="0yV-kn-zaT" firstAttribute="centerX" secondItem="dCK-AJ-zGU" secondAttribute="centerX" id="yga-ja-dQU"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="NOQ-Hg-AHQ">
@@ -327,8 +332,15 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
                                                 <rect key="frame" x="0.0" y="121" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="bananaStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="tgW-rI-pae"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="O5s-2N-3iP" firstAttribute="centerX" secondItem="y33-ND-gz2" secondAttribute="centerX" id="Y2e-An-ob7"/>
+                                            <constraint firstItem="gKu-86-RhI" firstAttribute="centerX" secondItem="y33-ND-gz2" secondAttribute="centerX" id="hBD-8a-VAU"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Avp-qc-3TZ">
                                         <rect key="frame" x="334" y="0.0" width="94" height="153"/>
@@ -348,6 +360,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
                                                 <rect key="frame" x="0.0" y="121" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="pineappleStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="Up0-Ul-XtD"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -369,6 +384,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
                                                 <rect key="frame" x="0.0" y="121" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="kiwiStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="EKR-jB-x3C"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -394,10 +412,19 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
                                                 <rect key="frame" x="0.0" y="121" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="mangoStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="G1X-6k-QrA"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Avp-qc-3TZ" firstAttribute="centerY" secondItem="PsW-aQ-caa" secondAttribute="centerY" id="GlH-Cj-S6r"/>
+                                    <constraint firstItem="Zbl-K8-EV5" firstAttribute="centerY" secondItem="PsW-aQ-caa" secondAttribute="centerY" id="Ljw-Rp-LzD"/>
+                                    <constraint firstItem="NOQ-Hg-AHQ" firstAttribute="centerY" secondItem="PsW-aQ-caa" secondAttribute="centerY" id="S1O-4j-viC"/>
+                                    <constraint firstItem="oMO-8k-vnE" firstAttribute="centerY" secondItem="PsW-aQ-caa" secondAttribute="centerY" id="sto-rA-AFz"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gcO-Xb-kNs"/>
