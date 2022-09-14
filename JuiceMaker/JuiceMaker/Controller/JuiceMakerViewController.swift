@@ -24,8 +24,7 @@ class JuiceMakerViewController: UIViewController {
        
     }
     
-    //성공할 경우의 alert
-    func makeSuccessAlert(nameOfJuice: String) -> UIAlertController {
+    func makeSuccessAlert(nameOfJuice: String) -> UIAlertController { //주스제조 성공할 경우의 alert
         let successAlert = UIAlertController(title: "제조 완료",
                                              message: "\(nameOfJuice)쥬스 나왔습니다! 맛있게 드세요!",
                                              preferredStyle: UIAlertController.Style.alert)
@@ -33,8 +32,8 @@ class JuiceMakerViewController: UIViewController {
         successAlert.addAction(successAction)
         return successAlert
     }
-    //실패할 경우의 alert
-    func makeFailAlert() -> UIAlertController {
+    
+    func makeFailAlert() -> UIAlertController {  //주스제조 실패할 경우의 alert
         let failAlert = UIAlertController(title: "제조 불가",
                                           message: "재료가 모자라요. 재고를 수정할까요?",
                                           preferredStyle: UIAlertController.Style.alert)
@@ -57,18 +56,14 @@ class JuiceMakerViewController: UIViewController {
         failAlert.addAction(stockManageAction)
         return failAlert
     }
-    //alert present 함수
-    func showAlert(nameOfJuice: String, boolJuice: Bool) {
+    
+    func showAlert(nameOfJuice: String, boolJuice: Bool) {      //alert present 함수
         if boolJuice == true {
-            presentAlert(nameOfAlert: makeSuccessAlert(nameOfJuice: nameOfJuice))
+            present(makeSuccessAlert(nameOfJuice: nameOfJuice), animated: true)
         } else {
-            presentAlert(nameOfAlert: makeFailAlert())
+            present(makeFailAlert(), animated: true)
         }
         updateStockLabel()
-    }
-    
-    func presentAlert(nameOfAlert: UIAlertController) {
-        present(nameOfAlert, animated: true)
     }
     
     @IBAction func strawberryBananaJuiceButton(_ sender: UIButton) {
