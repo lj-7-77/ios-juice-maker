@@ -9,6 +9,12 @@ import UIKit
 
 class StockModifyViewController: UIViewController {
 
+    var manageStockOfStrawberry: Int?
+    var manageStockOfBanana: Int?
+    var manageStockOfPineapple: Int?
+    var manageStockOfKiwi: Int?
+    var manageStockOfMango: Int?
+    
     @IBOutlet weak var manageStockOfStrawberryLabel: UILabel!
     @IBOutlet weak var manageStockOfBananaLabel: UILabel!
     @IBOutlet weak var manageStockOfPineappleLabel: UILabel!
@@ -16,47 +22,37 @@ class StockModifyViewController: UIViewController {
     @IBOutlet weak var manageStockOfMangoLabel: UILabel!
     
     @IBAction func closeButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true)
+        self.dismiss(animated: true, completion: nil)
+        self.presentingViewController?.dismiss(animated: true,completion: nil)
     }
     
     @IBAction func strawberryStepper(_ sender: UIStepper) {
-        manageStockOfStrawberryLabel.text = "\(manageStockOfStrawberry+Int(sender.value))"
-        
+        //manageStockOfStrawberryLabel.text = "\(manageStockOfStrawberry+Int(sender.value))"
+            
     }
     @IBAction func bananaStepper(_ sender: UIStepper) {
-        manageStockOfBananaLabel.text = "\(manageStockOfBanana+Int(sender.value))"
+        //manageStockOfBananaLabel.text = "\(manageStockOfBanana+Int(sender.value))"
     }
     @IBAction func pineappleStepper(_ sender: UIStepper) {
-        manageStockOfPineappleLabel.text = "\(manageStockOfPineapple+Int(sender.value))"
+        //manageStockOfPineappleLabel.text = "\(manageStockOfPineapple+Int(sender.value))"
     }
     @IBAction func kiwiStepper(_ sender: UIStepper) {
-        manageStockOfKiwiLabel.text = "\(manageStockOfKiwi+Int(sender.value))"
+        //manageStockOfKiwiLabel.text = "\(manageStockOfKiwi+Int(sender.value))"
     }
     @IBAction func mangoStepper(_ sender: UIStepper) {
-        manageStockOfMangoLabel.text = "\(manageStockOfMango+Int(sender.value))"
+        //manageStockOfMangoLabel.text = "\(manageStockOfMango+Int(sender.value))"
     }
-    
-    var manageStockOfStrawberry: Int = 0
-    var manageStockOfBanana: Int = 0
-    var manageStockOfPineapple: Int = 0
-    var manageStockOfKiwi: Int = 0
-    var manageStockOfMango: Int = 0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        manageStockOfStrawberryLabel.text = "\(manageStockOfStrawberry)"
-        manageStockOfBananaLabel.text = "\(manageStockOfBanana)"
-        manageStockOfPineappleLabel.text = "\(manageStockOfPineapple)"
-        manageStockOfKiwiLabel.text = "\(manageStockOfKiwi)"
-        manageStockOfMangoLabel.text = "\(manageStockOfMango)"
+        manageStockOfStrawberryLabel.text = "\(manageStockOfStrawberry ?? 999)"
+        manageStockOfBananaLabel.text = "\(manageStockOfBanana ?? 999)"
+        manageStockOfPineappleLabel.text = "\(manageStockOfPineapple ?? 999)"
+        manageStockOfKiwiLabel.text = "\(manageStockOfKiwi ?? 999)"
+        manageStockOfMangoLabel.text = "\(manageStockOfMango ?? 999)"
         
-        //prepare(for: UIStoryboardSegue.manageByButton, sender: <#T##Any?#>)
     }
-    
-    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    //}
+
 
     /*
     // MARK: - Navigation

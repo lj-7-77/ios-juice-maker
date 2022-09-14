@@ -25,7 +25,7 @@ class FruitStore {
         return true
     }
     
-    func comparisonOfStockAndOrder(requiredFruit: String, recipe: Recipe) -> Bool {     //재고량-필요량 비교
+    func comparisonOfStockAndOrder(requiredFruit: String, recipe: Recipe) -> Bool { //재고량-필요량 비교(과일1종류)
         switch requiredFruit {
         case "requiredStrawberry":
             if stock.strawberry >= recipe.requiredStrawberry {
@@ -53,7 +53,7 @@ class FruitStore {
         return false
     }
     
-    func changeStock(selectedMenu: Array<String>, recipe: Recipe) {        //재고차감
+    func changeStock(selectedMenu: Array<String>, recipe: Recipe) {        //재고차감(재고수정)
         for i in 0..<selectedMenu.count {
             let checkFruit: String = "\(selectedMenu[i])"
             switch checkFruit {
@@ -71,6 +71,5 @@ class FruitStore {
                 break
             }
         }
-        //return stock
     }
 }

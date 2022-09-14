@@ -20,8 +20,31 @@ class JuiceMakerViewController: UIViewController {
     var boolJuice: Bool = false
     var nameOfJuice: String = ""
     
+    
     @IBAction func stockModifyButton(_ sender: UIButton) {
-       
+        //재고수정버튼이 눌리면 -> 값을 넘겨줌
+        performSegue(withIdentifier: "manageByButton", sender: sender)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "manageByButton" {
+            if let stockModifyViewController = segue.destination as? StockModifyViewController {
+                stockModifyViewController.manageStockOfStrawberry = self.juiceMaker.fruitStore.stock.strawberry
+                stockModifyViewController.manageStockOfBanana = self.juiceMaker.fruitStore.stock.banana
+                stockModifyViewController.manageStockOfPineapple = self.juiceMaker.fruitStore.stock.pineapple
+                stockModifyViewController.manageStockOfKiwi = self.juiceMaker.fruitStore.stock.kiwi
+                stockModifyViewController.manageStockOfMango = self.juiceMaker.fruitStore.stock.mango
+            }
+        }
+    }
+    
+    func updateStockLabel() {
+        stockOfStrawberryLabel.text = "\(juiceMaker.fruitStore.stock.strawberry)"
+        stockOfBananaLabel.text = "\(juiceMaker.fruitStore.stock.banana)"
+        stockOfPineappleLabel.text = "\(juiceMaker.fruitStore.stock.pineapple)"
+        stockOfKiwiLabel.text = "\(juiceMaker.fruitStore.stock.kiwi)"
+        stockOfMangoLabel.text = "\(juiceMaker.fruitStore.stock.mango)"
     }
     
     func makeSuccessAlert(nameOfJuice: String) -> UIAlertController { //주스제조 성공할 경우의 alert
@@ -44,13 +67,16 @@ class JuiceMakerViewController: UIViewController {
                     as? StockModifyViewController else {
                 return
             }
+            //alert에서 재고수정버튼이 눌리면 -> 값을 넘겨줌, modal방식으로 화면전환
             stockModifyViewController.manageStockOfStrawberry = self.juiceMaker.fruitStore.stock.strawberry
             stockModifyViewController.manageStockOfBanana = self.juiceMaker.fruitStore.stock.banana
             stockModifyViewController.manageStockOfPineapple = self.juiceMaker.fruitStore.stock.pineapple
             stockModifyViewController.manageStockOfKiwi = self.juiceMaker.fruitStore.stock.kiwi
             stockModifyViewController.manageStockOfMango = self.juiceMaker.fruitStore.stock.mango
-
-            self.navigationController?.pushViewController(stockModifyViewController, animated: true)
+            
+           // self.navigationController?.pushViewController(stockModifyViewController, animated: true)
+            self.present(stockModifyViewController, animated: true, completion: nil)
+            
         }
         failAlert.addAction(failAction)
         failAlert.addAction(stockManageAction)
@@ -67,18 +93,16 @@ class JuiceMakerViewController: UIViewController {
     }
     
     @IBAction func strawberryBananaJuiceButton(_ sender: UIButton) {
-        recipe = Recipe.init(menu: "strawberryBananaJuice")
-        selectedMenu = recipe.strawberryBananaJuice
-        boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        showAlert(nameOfJuice: "딸기바나나", boolJuice: boolJuice)
-
+        recipe = Recipe.init(menu: "strawberryBananaJuice") //레시피대로 과일별 필요수량 셋팅
+        selectedMenu = recipe.strawberryBananaJuice         //레시피대로 필요한 과일 배열 가져오기(과일재고 체크목적)
+        boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe) //제조 가능/불가능 결정
+        showAlert(nameOfJuice: "딸기바나나", boolJuice: boolJuice) //제조결과에 따라 성공/실패alert 띄움
     }
     @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
         recipe = Recipe.init(menu: "mangoKiwiJuice")
         selectedMenu = recipe.mangoKiwiJuice
         boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
         showAlert(nameOfJuice: "망고키위", boolJuice: boolJuice)
-
     }
     @IBAction func strawberryJuiceButton(_ sender: UIButton) {
         recipe = Recipe.init(menu: "strawberryJuice")
@@ -115,12 +139,5 @@ class JuiceMakerViewController: UIViewController {
         super.viewDidLoad()
         updateStockLabel()
     }
-   
-    func updateStockLabel() {
-        stockOfStrawberryLabel.text = "\(juiceMaker.fruitStore.stock.strawberry)"
-        stockOfBananaLabel.text = "\(juiceMaker.fruitStore.stock.banana)"
-        stockOfPineappleLabel.text = "\(juiceMaker.fruitStore.stock.pineapple)"
-        stockOfKiwiLabel.text = "\(juiceMaker.fruitStore.stock.kiwi)"
-        stockOfMangoLabel.text = "\(juiceMaker.fruitStore.stock.mango)"
-    }
+    
 }
