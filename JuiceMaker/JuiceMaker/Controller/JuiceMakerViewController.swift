@@ -30,7 +30,7 @@ class JuiceMakerViewController: UIViewController {
     
     func makeSuccessAlert(nameOfJuice: String) -> UIAlertController { //주스제조 성공할 경우의 alert
         let successAlert = UIAlertController(title: "제조 완료",
-                                             message: "\(nameOfJuice)쥬스 나왔습니다! 맛있게 드세요!",
+                                             message: "\(nameOfJuice) 쥬스 나왔습니다! 맛있게 드세요!",
                                              preferredStyle: UIAlertController.Style.alert)
         let successAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         successAlert.addAction(successAction)
@@ -77,50 +77,35 @@ class JuiceMakerViewController: UIViewController {
        self.present(stockModifyViewController, animated: true)
     }
     
+    func letsMakeJuice(menu: String, selectedMenu: Array<String>){
+        recipe = Recipe.init(menu: menu) //레시피대로 과일별 필요수량 셋팅
+        boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
+        showAlert(nameOfJuice: menu, boolJuice: boolJuice) //제조결과에 따라 성공/실패alert 띄움
+    } //orderJuice 레시피대로 필요한 과일 배열 가져오기(과일재고 체크목적), boolJuice 제조 가능/불가능 결정
+    
     @IBAction func stockModifyButton(_ sender: UIButton) {
         changeViewAndTossValue()
     }
     @IBAction func strawberryBananaJuiceButton(_ sender: UIButton) {
-        recipe = Recipe.init(menu: "strawberryBananaJuice") //레시피대로 과일별 필요수량 셋팅
-        selectedMenu = recipe.strawberryBananaJuice         //레시피대로 필요한 과일 배열 가져오기(과일재고 체크목적)
-        boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe) //제조 가능/불가능 결정
-        showAlert(nameOfJuice: "딸기바나나", boolJuice: boolJuice) //제조결과에 따라 성공/실패alert 띄움
+        letsMakeJuice(menu: "딸기바나나", selectedMenu: recipe.strawberryBananaJuice)
     }
     @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
-        recipe = Recipe.init(menu: "mangoKiwiJuice")
-        selectedMenu = recipe.mangoKiwiJuice
-        boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        showAlert(nameOfJuice: "망고키위", boolJuice: boolJuice)
+        letsMakeJuice(menu: "망고키위", selectedMenu: recipe.mangoKiwiJuice)
     }
     @IBAction func strawberryJuiceButton(_ sender: UIButton) {
-        recipe = Recipe.init(menu: "strawberryJuice")
-        selectedMenu = recipe.strawberryJuice
-        boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        showAlert(nameOfJuice: "딸기", boolJuice: boolJuice)
+        letsMakeJuice(menu: "딸기", selectedMenu: recipe.strawberryJuice)
     }
     @IBAction func bananaJuiceButton(_ sender: UIButton) {
-        recipe = Recipe.init(menu: "bananaJuice")
-        selectedMenu = recipe.bananaJuice
-        boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        showAlert(nameOfJuice: "바나나", boolJuice: boolJuice)
+        letsMakeJuice(menu: "바나나", selectedMenu: recipe.bananaJuice)
     }
     @IBAction func pineappleJuiceButton(_ sender: UIButton) {
-        recipe = Recipe.init(menu: "pineappleJuice")
-        selectedMenu = recipe.pineappleJuice
-        boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        showAlert(nameOfJuice: "파인애플", boolJuice: boolJuice)
+        letsMakeJuice(menu: "파인애플", selectedMenu: recipe.pineappleJuice)
     }
     @IBAction func kiwiJuiceButton(_ sender: UIButton) {
-        recipe = Recipe.init(menu: "kiwiJuice")
-        selectedMenu = recipe.kiwiJuice
-        boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        showAlert(nameOfJuice: "키위", boolJuice: boolJuice)
+        letsMakeJuice(menu: "키위", selectedMenu: recipe.kiwiJuice)
     }
     @IBAction func mangoJuiceButton(_ sender: UIButton) {
-        recipe = Recipe.init(menu: "mangoJuice")
-        selectedMenu = recipe.mangoJuice
-        boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
-        showAlert(nameOfJuice: "망고", boolJuice: boolJuice)
+        letsMakeJuice(menu: "망고", selectedMenu: recipe.mangoJuice)
     }
     
     override func viewDidLoad() {
