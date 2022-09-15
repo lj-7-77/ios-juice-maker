@@ -21,39 +21,45 @@ class StockModifyViewController: UIViewController {
     @IBOutlet weak var manageStockOfKiwiLabel: UILabel!
     @IBOutlet weak var manageStockOfMangoLabel: UILabel!
     
-    @IBAction func closeButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func closeButton(_ sender: UIButton) {
         self.presentingViewController?.dismiss(animated: true,completion: nil)
     }
-    
     @IBAction func strawberryStepper(_ sender: UIStepper) {
-        //manageStockOfStrawberryLabel.text = "\(manageStockOfStrawberry+Int(sender.value))"
-            
+        manageStockOfStrawberryLabel.text = "\((manageStockOfStrawberry ?? 999) + Int(sender.value))"
     }
     @IBAction func bananaStepper(_ sender: UIStepper) {
-        //manageStockOfBananaLabel.text = "\(manageStockOfBanana+Int(sender.value))"
+        manageStockOfBananaLabel.text = "\((manageStockOfBanana ?? 999) + Int(sender.value))"
     }
     @IBAction func pineappleStepper(_ sender: UIStepper) {
-        //manageStockOfPineappleLabel.text = "\(manageStockOfPineapple+Int(sender.value))"
+        manageStockOfPineappleLabel.text = "\((manageStockOfPineapple ?? 999) + Int(sender.value))"
     }
     @IBAction func kiwiStepper(_ sender: UIStepper) {
-        //manageStockOfKiwiLabel.text = "\(manageStockOfKiwi+Int(sender.value))"
+        manageStockOfKiwiLabel.text = "\((manageStockOfKiwi ?? 999) + Int(sender.value))"
     }
     @IBAction func mangoStepper(_ sender: UIStepper) {
-        //manageStockOfMangoLabel.text = "\(manageStockOfMango+Int(sender.value))"
+        manageStockOfMangoLabel.text = "\((manageStockOfMango ?? 999) + Int(sender.value))"
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        manageStockOfStrawberryLabel.text = "\(manageStockOfStrawberry ?? 999)"
-        manageStockOfBananaLabel.text = "\(manageStockOfBanana ?? 999)"
-        manageStockOfPineappleLabel.text = "\(manageStockOfPineapple ?? 999)"
-        manageStockOfKiwiLabel.text = "\(manageStockOfKiwi ?? 999)"
-        manageStockOfMangoLabel.text = "\(manageStockOfMango ?? 999)"
-        
+
+        if let msg = manageStockOfStrawberry {
+            manageStockOfStrawberryLabel.text = "\(msg)"
+        }
+        if let msg = manageStockOfBanana {
+            manageStockOfBananaLabel.text = "\(msg)"
+        }
+        if let msg = manageStockOfPineapple {
+            manageStockOfPineappleLabel.text = "\(msg)"
+        }
+        if let msg = manageStockOfKiwi {
+            manageStockOfKiwiLabel.text = "\(msg)"
+        }
+        if let msg = manageStockOfMango {
+            manageStockOfMangoLabel.text = "\(msg)"
+        }
     }
-
-
+    
     /*
     // MARK: - Navigation
 
@@ -63,5 +69,4 @@ class StockModifyViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

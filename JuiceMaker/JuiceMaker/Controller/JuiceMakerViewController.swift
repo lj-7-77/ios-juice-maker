@@ -20,12 +20,6 @@ class JuiceMakerViewController: UIViewController {
     var boolJuice: Bool = false
     var nameOfJuice: String = ""
     
-    
-    @IBAction func stockModifyButton(_ sender: UIButton) {
-        //재고수정버튼이 눌리면 -> 값을 넘겨줌
-        self.changeViewAndTossValue()
-    }
-    
     func updateStockLabel() {
         stockOfStrawberryLabel.text = "\(juiceMaker.fruitStore.stock.strawberry)"
         stockOfBananaLabel.text = "\(juiceMaker.fruitStore.stock.banana)"
@@ -40,6 +34,7 @@ class JuiceMakerViewController: UIViewController {
                                              preferredStyle: UIAlertController.Style.alert)
         let successAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         successAlert.addAction(successAction)
+        
         return successAlert
     }
     
@@ -48,11 +43,22 @@ class JuiceMakerViewController: UIViewController {
                                           message: "재료가 모자라요. 재고를 수정할까요?",
                                           preferredStyle: UIAlertController.Style.alert)
         let failAction = UIAlertAction(title: "주문 취소", style: .cancel, handler: nil)
-        let stockManageAction = UIAlertAction(title: "재고 수정", style: .default) { UIAlertAction in self.changeViewAndTossValue()
+        let stockManageAction = UIAlertAction(title: "재고 수정", style: .default) { UIAlertAction in
+            self.changeViewAndTossValue()
         }
         failAlert.addAction(failAction)
         failAlert.addAction(stockManageAction)
+        
         return failAlert
+    }
+    
+    func showAlert(nameOfJuice: String, boolJuice: Bool) {      //alert present 함수
+        if boolJuice == true {
+            present(makeSuccessAlert(nameOfJuice: nameOfJuice), animated: true)
+        } else {
+            present(makeFailAlert(), animated: true)
+        }
+        updateStockLabel()
     }
     
     func changeViewAndTossValue() {             //값을 넘겨줌, modal방식으로 화면전환
@@ -67,25 +73,18 @@ class JuiceMakerViewController: UIViewController {
         stockModifyViewController.manageStockOfKiwi = self.juiceMaker.fruitStore.stock.kiwi
         stockModifyViewController.manageStockOfMango = self.juiceMaker.fruitStore.stock.mango
         
-       // self.navigationController?.pushViewController(stockModifyViewController, animated: true)
-        self.present(stockModifyViewController, animated: true, completion: nil)
+       //self.navigationController?.pushViewController(stockModifyViewController, animated: true)
+       self.present(stockModifyViewController, animated: true)
     }
     
-    func showAlert(nameOfJuice: String, boolJuice: Bool) {      //alert present 함수
-        if boolJuice == true {
-            present(makeSuccessAlert(nameOfJuice: nameOfJuice), animated: true)
-        } else {
-            present(makeFailAlert(), animated: true)
-        }
-        updateStockLabel()
+    @IBAction func stockModifyButton(_ sender: UIButton) {
+        changeViewAndTossValue()
     }
-    
     @IBAction func strawberryBananaJuiceButton(_ sender: UIButton) {
         recipe = Recipe.init(menu: "strawberryBananaJuice") //레시피대로 과일별 필요수량 셋팅
         selectedMenu = recipe.strawberryBananaJuice         //레시피대로 필요한 과일 배열 가져오기(과일재고 체크목적)
         boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe) //제조 가능/불가능 결정
         showAlert(nameOfJuice: "딸기바나나", boolJuice: boolJuice) //제조결과에 따라 성공/실패alert 띄움
-
     }
     @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
         recipe = Recipe.init(menu: "mangoKiwiJuice")
@@ -128,5 +127,4 @@ class JuiceMakerViewController: UIViewController {
         super.viewDidLoad()
         updateStockLabel()
     }
-    
 }

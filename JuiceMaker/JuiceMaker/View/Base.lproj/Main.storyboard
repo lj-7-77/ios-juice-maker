@@ -426,6 +426,15 @@
                                     <constraint firstItem="oMO-8k-vnE" firstAttribute="centerY" secondItem="PsW-aQ-caa" secondAttribute="centerY" id="sto-rA-AFz"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSh-PP-sqS">
+                                <rect key="frame" x="743" y="44" width="89" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="닫기"/>
+                                <connections>
+                                    <action selector="closeButton:" destination="Yu1-lM-nqp" eventType="touchUpInside" id="SLt-fK-ADK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gcO-Xb-kNs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -434,16 +443,7 @@
                             <constraint firstItem="CyR-1z-99w" firstAttribute="centerY" secondItem="tKV-4l-Vtc" secondAttribute="centerY" id="jLS-aT-I6J"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="g4W-fY-l7r">
-                        <barButtonItem key="rightBarButtonItem" title="닫기" id="j6y-jx-gLC">
-                            <connections>
-                                <action selector="closeButton:" destination="Yu1-lM-nqp" id="EMi-i3-dMF"/>
-                            </connections>
-                        </barButtonItem>
-                        <connections>
-                            <outlet property="rightBarButtonItem" destination="j6y-jx-gLC" id="iYS-zb-Uv2"/>
-                        </connections>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
                     <connections>
                         <outlet property="manageStockOfBananaLabel" destination="gKu-86-RhI" id="Ijl-sh-TJl"/>
                         <outlet property="manageStockOfKiwiLabel" destination="ZDv-1m-HBY" id="qGp-2R-pU4"/>
@@ -454,7 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1636.6071428571429" y="900.00000000000011"/>
+            <point key="canvasLocation" x="1628.5714285714284" y="1105.7971014492755"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cAf-jL-tPK">
@@ -475,7 +475,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2s5-lS-967" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1649" y="-117"/>
+            <point key="canvasLocation" x="1629" y="93"/>
         </scene>
     </scenes>
     <resources>
