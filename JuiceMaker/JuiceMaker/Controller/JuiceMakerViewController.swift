@@ -77,7 +77,7 @@ class JuiceMakerViewController: UIViewController {
        self.present(stockModifyViewController, animated: true)
     }
     
-    func letsMakeJuice(menu: String, selectedMenu: Array<String>){
+    func letsMakeJuice(menu: String, selectedMenu: [String : Int]){
         recipe = Recipe.init(menu: menu) //레시피대로 과일별 필요수량 셋팅
         boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
         showAlert(nameOfJuice: menu, boolJuice: boolJuice) //제조결과에 따라 성공/실패alert 띄움
@@ -87,25 +87,25 @@ class JuiceMakerViewController: UIViewController {
         changeViewAndTossValue()
     }
     @IBAction func strawberryBananaJuiceButton(_ sender: UIButton) {
-        letsMakeJuice(menu: "딸기바나나", selectedMenu: recipe.strawberryBananaJuice)
+        //letsMakeJuice(menu: "딸기바나나", selectedMenu: recipe.strawberryBananaJuice)
     }
     @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
-        letsMakeJuice(menu: "망고키위", selectedMenu: recipe.mangoKiwiJuice)
+        //letsMakeJuice(menu: "망고키위", selectedMenu: recipe.mangoKiwiJuice)
     }
     @IBAction func strawberryJuiceButton(_ sender: UIButton) {
-        letsMakeJuice(menu: "딸기", selectedMenu: recipe.strawberryJuice)
+        //letsMakeJuice(menu: "딸기", selectedMenu: recipe.strawberryJuice)
     }
     @IBAction func bananaJuiceButton(_ sender: UIButton) {
-        letsMakeJuice(menu: "바나나", selectedMenu: recipe.bananaJuice)
+        //letsMakeJuice(menu: "바나나", selectedMenu: recipe.bananaJuice)
     }
     @IBAction func pineappleJuiceButton(_ sender: UIButton) {
-        letsMakeJuice(menu: "파인애플", selectedMenu: recipe.pineappleJuice)
+       // letsMakeJuice(menu: "파인애플", selectedMenu: recipe.pineappleJuice)
     }
     @IBAction func kiwiJuiceButton(_ sender: UIButton) {
-        letsMakeJuice(menu: "키위", selectedMenu: recipe.kiwiJuice)
+       // letsMakeJuice(menu: "키위", selectedMenu: recipe.kiwiJuice)
     }
     @IBAction func mangoJuiceButton(_ sender: UIButton) {
-        letsMakeJuice(menu: "망고", selectedMenu: recipe.mangoJuice)
+       // letsMakeJuice(menu: "망고", selectedMenu: recipe.mangoJuice)
     }
     
     override func viewDidLoad() {

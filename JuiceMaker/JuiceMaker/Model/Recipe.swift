@@ -9,70 +9,34 @@ import Foundation
 
 class Recipe {
     
-    let strawberryJuice: Array<String> = ["requiredStrawberry"]
-    let bananaJuice: Array<String> = ["requiredBanana"]
-    let pineappleJuice: Array<String> = ["requiredPineapple"]
-    let kiwiJuice: Array<String> = ["requiredKiwi"]
-    let mangoJuice: Array<String> = ["requiredMango"]
-    let strawberryBananaJuice: Array<String> = ["requiredStrawberry","requiredBanana"]
-    let mangoKiwiJuice: Array<String> = ["requiredMango","requiredKiwi"]
+    let strawberryJuice: [String : Int] = ["requiredStrawberry":16]
+    let bananaJuice: [String : Int] = ["requiredBanana":2]
+    let pineappleJuice: [String : Int] = ["requiredPineapple":2]
+    let kiwiJuice: [String : Int] = ["requiredKiwi":3]
+    let mangoJuice: [String : Int] = ["requiredMango":3]
+    let strawberryBananaJuice: [String : Int] = ["requiredStrawberry":10, "requiredBanana":1]
+    let mangoKiwiJuice: [String : Int] = ["requiredMango":2, "requiredKiwi":1]
     
-    var requiredStrawberry: Int
-    var requiredBanana: Int
-    var requiredPineapple: Int
-    var requiredKiwi: Int
-    var requiredMango: Int
+    var recipe: [String : Int]
     
     init(menu: String) {
         switch menu {
         case "딸기":
-            requiredStrawberry = 16
-            requiredBanana = 0
-            requiredPineapple = 0
-            requiredKiwi = 0
-            requiredMango = 0
+            recipe = strawberryJuice
         case "바나나":
-            requiredStrawberry = 0
-            requiredBanana = 2
-            requiredPineapple = 0
-            requiredKiwi = 0
-            requiredMango = 0
+            recipe = bananaJuice
         case "파인애플":
-            requiredStrawberry = 0
-            requiredBanana = 0
-            requiredPineapple = 2
-            requiredKiwi = 0
-            requiredMango = 0
+            recipe = pineappleJuice
         case "키위":
-            requiredStrawberry = 0
-            requiredBanana = 0
-            requiredPineapple = 0
-            requiredKiwi = 3
-            requiredMango = 0
+            recipe = kiwiJuice
         case "망고":
-            requiredStrawberry = 0
-            requiredBanana = 0
-            requiredPineapple = 0
-            requiredKiwi = 0
-            requiredMango = 3
+            recipe = mangoJuice
         case "딸기바나나":
-            requiredStrawberry = 10
-            requiredBanana = 1
-            requiredPineapple = 0
-            requiredKiwi = 0
-            requiredMango = 0
+            recipe = strawberryBananaJuice
         case "망고키위":
-            requiredStrawberry = 0
-            requiredBanana = 0
-            requiredPineapple = 0
-            requiredKiwi = 1
-            requiredMango = 2
+            recipe = mangoKiwiJuice
         default:
-            requiredStrawberry = 0
-            requiredBanana = 0
-            requiredPineapple = 0
-            requiredKiwi = 0
-            requiredMango = 0
+            recipe = [:]
         }
     }
 }
