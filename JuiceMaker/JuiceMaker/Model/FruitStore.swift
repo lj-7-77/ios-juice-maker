@@ -10,22 +10,36 @@ class FruitStore {
     
     var stock: stockOfFruit = stockOfFruit()
 
-//    func checkStock(selectedMenu: [String : Int], recipe: Recipe) -> Bool {              //재고확인
-//        var resultOfFruitStock: Array<Bool> = []
-//        for i in selectedMenu {
-//            let valueBool: Bool = comparisonOfStockAndOrder(requiredFruit: $0, recipe: recipe)
-//            resultOfFruitStock.append(valueBool)
+    func checkStock(selectedMenu: [String:Int]) -> Bool {              //재고확인
+        var resultOfFruitStock: Array<Bool> = []
+        for (key,_) in selectedMenu {
+            if let requiredAmount: Int = selectedMenu[key] { //딕셔너리 값 가져오기
+                //재고가 충분히 있는지 확인
+                let valueBool: Bool = comparisonOfStockAndOrder(requiredFruit: key,
+                                                                requiredAmount: requiredAmount)
+                resultOfFruitStock.append(valueBool)
+            }
+        }
+
+        for i in resultOfFruitStock {
+            if i == false {
+                return false
+            }
+        }
+        return true
+    }
+    
+    //재고량-필요량 비교(과일1종류)
+    func comparisonOfStockAndOrder(requiredFruit: String, requiredAmount: Int) -> Bool {
+//        guard requiredFruit == "재고 과일의 이름" else {
+//            return false
 //        }
-//
-//        for i in resultOfFruitStock {
-//            if i == false {
-//                return false
-//            }
+//        guard 재고과일수량 >= requiredAmount else {
+//            return false
 //        }
-//        return true
-//    }
-//
-//    func comparisonOfStockAndOrder(requiredFruit: String, recipe: Recipe) -> Bool { //재고량-필요량 비교(과일1종류)
+        return true
+    }
+    
 //        switch requiredFruit {
 //        case "requiredStrawberry":
 //            if stock.strawberry >= recipe.requiredStrawberry {
@@ -50,10 +64,8 @@ class FruitStore {
 //        default:
 //            return false
 //        }
-//        return false
-//    }
-//
-//    func changeStock(selectedMenu: Array<String>, recipe: Recipe) {        //재고차감(재고수정)
+
+        //    func changeStock(selectedMenu: [String:Int], recipe: Recipe) {        //재고차감(재고수정)
 //        for i in 0..<selectedMenu.count {
 //            let checkFruit: String = "\(selectedMenu[i])"
 //            switch checkFruit {

@@ -15,10 +15,10 @@ class JuiceMakerViewController: UIViewController {
     @IBOutlet weak var stockOfMangoLabel: UILabel!
     
     let juiceMaker = JuiceMaker()
-    var recipe: Recipe = Recipe(menu: "")
-    var selectedMenu: Array<String> = []
+    //var recipe: Recipe = Recipe()
+    var selectedMenu: [String : Int]  = [:]
     var boolJuice: Bool = false
-    var nameOfJuice: String = ""
+//    var nameOfJuice: String = ""
     
     func updateStockLabel() {
         stockOfStrawberryLabel.text = "\(juiceMaker.fruitStore.stock.strawberry)"
@@ -77,9 +77,9 @@ class JuiceMakerViewController: UIViewController {
        self.present(stockModifyViewController, animated: true)
     }
     
-    func letsMakeJuice(menu: String, selectedMenu: [String : Int]){
-        recipe = Recipe.init(menu: menu) //레시피대로 과일별 필요수량 셋팅
-        boolJuice = juiceMaker.orderJuice(selectedMenu: selectedMenu, recipe: recipe)
+    func letsMakeJuice(menu: String){
+        let recipe: Recipe = Recipe(menu: menu) //레시피대로 과일별 필요수량 셋팅
+        boolJuice = juiceMaker.orderJuice(selectedMenu: recipe.juice)
         showAlert(nameOfJuice: menu, boolJuice: boolJuice) //제조결과에 따라 성공/실패alert 띄움
     } //orderJuice 레시피대로 필요한 과일 배열 가져오기(과일재고 체크목적), boolJuice 제조 가능/불가능 결정
     
@@ -87,7 +87,7 @@ class JuiceMakerViewController: UIViewController {
         changeViewAndTossValue()
     }
     @IBAction func strawberryBananaJuiceButton(_ sender: UIButton) {
-        //letsMakeJuice(menu: "딸기바나나", selectedMenu: recipe.strawberryBananaJuice)
+        letsMakeJuice(menu: "딸기바나나")
     }
     @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
         //letsMakeJuice(menu: "망고키위", selectedMenu: recipe.mangoKiwiJuice)

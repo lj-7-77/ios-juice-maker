@@ -9,34 +9,25 @@ import Foundation
 
 class Recipe {
     
-    let strawberryJuice: [String : Int] = ["requiredStrawberry":16]
-    let bananaJuice: [String : Int] = ["requiredBanana":2]
-    let pineappleJuice: [String : Int] = ["requiredPineapple":2]
-    let kiwiJuice: [String : Int] = ["requiredKiwi":3]
-    let mangoJuice: [String : Int] = ["requiredMango":3]
-    let strawberryBananaJuice: [String : Int] = ["requiredStrawberry":10, "requiredBanana":1]
-    let mangoKiwiJuice: [String : Int] = ["requiredMango":2, "requiredKiwi":1]
-    
-    var recipe: [String : Int]
-    
+    var juice: [String : Int]
     init(menu: String) {
         switch menu {
         case "딸기":
-            recipe = strawberryJuice
+            juice = ["strawberry":16]
         case "바나나":
-            recipe = bananaJuice
+            juice = ["banana":2]
         case "파인애플":
-            recipe = pineappleJuice
+            juice = ["pineapple":2]
         case "키위":
-            recipe = kiwiJuice
+            juice = ["kiwi":3]
         case "망고":
-            recipe = mangoJuice
+            juice = ["mango":3]
         case "딸기바나나":
-            recipe = strawberryBananaJuice
+            juice = ["strawberry":10, "banana":1]
         case "망고키위":
-            recipe = mangoKiwiJuice
+            juice = ["mango":2, "kiwi":1]
         default:
-            recipe = [:]
+            juice = [:]
         }
     }
 }
